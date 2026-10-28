@@ -1,0 +1,12 @@
+# Ambiente virtual e cache do Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Arquivos locais de ferramentas
+.env
+.pytest_cache/
+
+# Planilhas geradas pelo programa
+anuncios *.xlsx
