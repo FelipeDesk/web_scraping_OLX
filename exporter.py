@@ -1,12 +1,14 @@
 """Geração e formatação da planilha de anúncios."""
 
 from datetime import datetime
+from pathlib import Path
 
 from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font
 
 
 CABECALHO = ["Titulo", "Preço", "Localização", "Data Postada", "Link"]
+PASTA_RESULTADOS = Path("resultados")
 
 
 def ajustar_largura_colunas(planilha):
@@ -48,7 +50,10 @@ def gerar_planilha(anuncios, nome_arquivo=None):
 
     if nome_arquivo is None:
         data_atual = datetime.now().strftime("%d-%m-%y")
-        nome_arquivo = f"anuncios {data_atual}.xlsx"
+        nome_arquivo = PASTA_RESULTADOS / f"anuncios {data_atual}.xlsx"
+    else:
+        nome_arquivo = Path(nome_arquivo)
 
+    nome_arquivo.parent.mkdir(parents=True, exist_ok=True)
     workbook.save(nome_arquivo)
-    return nome_arquivo
+    return str(nome_arquivo)

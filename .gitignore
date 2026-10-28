@@ -9,4 +9,6 @@ __pycache__/
 .pytest_cache/
 
 # Planilhas geradas pelo programa
+resultados/
+# Resultados gerados por versões anteriores, fora da pasta de saída
 anuncios *.xlsx
